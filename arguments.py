@@ -61,8 +61,6 @@ class ArgParser(object):
         parser.add_argument('--adjust_loss', dest='adjust_loss',
                             help='adjust the loss function at which epoch', default=45)
         parser.add_argument('--factor_wave', dest='factor_wave', help='wave loss factor', default=0.5)
-        # parser.add_argument('--ft_sc', dest='factor_sc',
-        #                     help='Spectral Convergenge Loss factor', default=0.5)
 
         # distributed
         parser.add_argument('--dist', dest='distributed',

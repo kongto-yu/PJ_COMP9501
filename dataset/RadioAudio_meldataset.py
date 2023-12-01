@@ -24,8 +24,6 @@ class Meldataset(Dataset):
         """
         
         self.files = trans_list(input_path)
-        # previously, the unet is trained by the input of [128, 256](F*T),
-        # so here I also choose the time length is 256.
         self.expmel_len = 64
 
     def __len__(self):
@@ -46,7 +44,6 @@ class Meldataset(Dataset):
         radio_melamp = raido_h5f['mel'][:]
 
         assert audio_melamp.shape == radio_melamp.shape
-        # print(index, radio_melamp.shape[0], audio_melamp.shape[0], mel_len)
         mel_len = radio_melamp.shape[0]
         assert mel_len == audio_melamp.shape[0]
 
@@ -64,10 +61,6 @@ class Meldataset(Dataset):
             audio_melamp = audio_melamp[:self.expmel_len, :]
             radio_melamp = np.tile(radio_melamp, (n, 1))
             radio_melamp = radio_melamp[:self.expmel_len, :]
-            # pad the audio and radio
-            # pad_len = self.expmel_len - mel_len
-            # audio_melamp = np.pad(audio_melamp, ((0, pad_len), (0, 0)))
-            # radio_melamp = np.pad(radio_melamp, ((0, pad_len), (0, 0)))
         return torch.FloatTensor(radio_melamp).unsqueeze(0), torch.FloatTensor(audio_melamp).unsqueeze(0), filename
 
 class Meldataset_sliding:
@@ -146,27 +139,3 @@ class Meldataset2(Dataset):
 
     def __len__(self):
         return len(self.radioaudio_set)
-
-
-
-
-
-# if __name__ == '__main__':
-#     parser = ArgParser()
-#     args = parser.parse_train_arguments()
-#     input_path = '/home/zhaorn/radarmic/Radio_audio/RadioAudio_data/csv/LJSpeech_wavegan_val.csv'
-#
-#     dataset = Meldataset2(input_path)
-#     for idx, (audio_melamp, radio_melamp) in enumerate(dataset):
-#         audio_melamp = audio_melamp.numpy().squeeze(0).transpose(1,0)
-#         librosa.display.specshow(audio_melamp, sr=args.radRate, hop_length=128, x_axis='s', y_axis='mel')
-#         plt.colorbar(format='%+2.0f dB')
-#         plt.show()
-#
-#         radio_melamp = radio_melamp.numpy().squeeze(0).transpose(1, 0)
-#         librosa.display.specshow(radio_melamp, sr=args.radRate, hop_length=128, x_axis='s',  y_axis='mel')
-#         plt.colorbar(format='%+2.0f dB')
-#         plt.show()
-#
-#         if idx > 2:
-#             break

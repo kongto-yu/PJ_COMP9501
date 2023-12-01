@@ -1,10 +1,10 @@
 # PJ_COMP9501
 
-This repo is the final project of course COMP9501 open-source code of The University of Hong Kong.   
+## Claim
 
+This repo is the final project of the course COMP9501 open-source code of The University of Hong Kong.   
 The creator is Luca Jiangtao Yu, and the collaborator is Niehao Chen.
-
-This repo will be turn to private one after the grading of the course.
+This repo will be turned private after the grading of the course.
 
 ## Introduction
 Welcome to the Radio2Speech Project! It is a groundbreaking system that utilizes radio frequency (RF) signals for reconstructing high-quality speech from loudspeakers using mmWave Radar technology. Unlike conventional microphones, this innovative approach is uniquely resistant to noise and capable of penetrating soundproof materials.
@@ -19,7 +19,7 @@ Neural Vocoder Integration: The system incorporates a neural vocoder for speech 
 ## Performance:
 Versatile Efficacy: Extensive evaluations of Radio2Speech have showcased its impressive performance across various settings – from serene to noisy environments and even in soundproof scenarios.
 
-Comparable to Microphones: In quiet environments, Radio2Speech has demonstrated a performance on par with traditional microphones, marking a significant achievement.
+Comparable to Microphones: In quiet environments, Radio2Speech has demonstrated performance on par with traditional microphones, marking a significant achievement.
 
 ## How to Run the Code
 To begin training the Radio2Speech model, simply execute the following command in your terminal:

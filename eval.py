@@ -83,17 +83,7 @@ def evaluate_visual(model, val_loader, epoch, tb_log, count_iter, args):
 
     model.eval()
     with torch.no_grad():
-        # num_iters = len(val_loader)
-        #
-        # prefetcher = data_prefetcher(val_loader)
-        # audio_amp, audio_raw, radio_amp = prefetcher.next()
-        # i = 0
         with tqdm(total=len(val_loader), desc='metric for val', unit='batch', leave=False) as pbar:
-            # while radio_amp is not None:
-            #
-            #     i += 1
-            #     if i > num_iters:
-            #         break
 
             for i, batch_data in enumerate(val_loader):
                 mmwave, real_speech, filename = batch_data

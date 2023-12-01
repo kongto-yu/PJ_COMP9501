@@ -44,13 +44,12 @@ class Discriminator(nn.Module):
 
         return x
 
-# Create a Discriminator instance
 def test():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = Discriminator(in_channels=2).to(device)
     input = torch.randn(1, 2, 80, 80).to(device)
     summary.summary(model, input_size=(2, 80, 80))
-    print(model(input).shape)   # scaler range [0, 1]
+    print(model(input).shape)
 
 if __name__ == "__main__":
     test()
